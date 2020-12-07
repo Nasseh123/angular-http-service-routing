@@ -1,0 +1,23 @@
+<div class="container">
+    <input
+    (keyup.enter)="createPost(title)" #title    
+    type="text" class="form-control"
+    placeholder="input new item to the list...."
+    >
+<ul class="list-group">
+    <li *ngFor="let i of posts" class="list-group-item">
+        <a 
+        [routerLink]="['post-settings/',i.id,i.title]"
+        class="btn btn-warning btn-sm"
+        >mores</a>
+        <button 
+        (click)="updatePost(i)"
+        class="btn btn-warning btn-sm"
+        >Update</button>
+        <button 
+        (click)="deletePost(i)"
+        class="btn btn-danger btn-sm"
+        >Delete</button>
+       {{i.title}}</li>
+</ul>
+</div>id

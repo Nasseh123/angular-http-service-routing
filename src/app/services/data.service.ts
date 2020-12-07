@@ -5,7 +5,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, observable, throwError } from 'rxjs';
 // import 'rxjs/add/observable/throw';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,8 @@ export class DataService {
     
    }
    getAll(){
-    return this.http.get(this.url)
+    return this.http.get(this.url).pipe(map(response=>response))
+    .pipe(catchError(this.handleError))
 
   }
   create(resource){
